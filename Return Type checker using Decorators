@@ -1,0 +1,21 @@
+"""Python's flexibility around data types is usually cited as one of the benefits of the language but it can sometimes cause problems though if incorrect data types go unnoticed.
+You've decided that in order to ensure your code is doing exactly what you want it to do, you will explicitly check the return types in all of 
+your functions and make sure they're returning what you expect. To do that, you are going to create a decorator
+that checks if the return type of the decorated function is correct."""
+
+def returns(return_type):
+  def decorator(func):
+    def wrapper(*args,**kwargs):
+      result = func(*args,**kwargs)
+      assert type(result) == return_type
+      return result
+    return wrapper
+  return decorator
+  
+@returns(dict)
+def foo(value):
+  return value
+try:
+  print(foo([1,2,3]))
+except AssertionError:
+  print('foo() did not return a dict!')
