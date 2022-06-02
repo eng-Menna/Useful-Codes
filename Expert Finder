@@ -7,7 +7,7 @@ def expert_finder(topic, client):
         client: A Client object that specifies the connection to the Stack Overflow dataset
 
     Outputs:
-        results: A DataFrame with columns for user_id and number_of_answers. Follows similar logic to bigquery_experts_results shown above.
+        results: A DataFrame with columns for user_id and number_of_answers. 
     '''
     my_query = """
                SELECT a.owner_user_id AS user_id, COUNT(1) AS number_of_answers
